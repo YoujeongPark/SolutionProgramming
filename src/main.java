@@ -1,3 +1,5 @@
+import theadEx.ThreadClassEx1;
+
 import java.io.IOException;
 
 public class main {
@@ -21,14 +23,19 @@ public class main {
         String path = FileIO.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져오기
         System.out.println(path);
 
-        FileIO fo = new FileIO();
-        fo.fileRead();
-        fo.fileWrite();
-        fo.fileReadAll();
+//        FileIO fo = new FileIO();
+//        fo.fileRead();
+//        fo.fileWrite();
+//        fo.fileReadAll();
 
         //Random
         RandomMaker rm = new RandomMaker();
         rm.randomAlphabet();
+
+        //Thread
+        ThreadClassEx1 thEx1 = new ThreadClassEx1();
+        thEx1.start();
+        System.out.println("------");
 
 
     }
