@@ -1,6 +1,26 @@
+import java.sql.SQLOutput;
 import java.util.StringTokenizer;
 
 public class StringClass {
+
+    public static String name = "Solution Program";
+
+    public void getIndex(){
+        if(name.indexOf("P") >=0){
+            System.out.println("P값 존재" + "위치 : " + name.indexOf("P"));
+        }else{
+            System.out.println("P값 존재하지 않음 ");
+        }
+    }
+
+    public void getLength(){
+        System.out.println(name.length());
+    }
+
+    public void getSubString(){
+        System.out.println(name.substring(0,4));
+    }
+
 
     public void StringBuilderCFunc(){
         StringBuilder sb = new StringBuilder("Rosy");
