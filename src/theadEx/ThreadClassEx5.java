@@ -3,12 +3,12 @@ package theadEx;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class ThreadClassEx4 extends Thread{
+public class ThreadClassEx5 extends Thread{
 
     private String fileName;
     private String result;
 
-    public ThreadClassEx4(String fileName) {
+    public ThreadClassEx5(String fileName) {
         this.fileName = fileName;
     }
 

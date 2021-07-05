@@ -1,10 +1,11 @@
 import org.w3c.dom.ls.LSOutput;
 import theadEx.ThreadClassEx1;
 import theadEx.ThreadClassEx2;
+import theadEx.ThreadClassEx4;
 
 import java.io.IOException;
 
-public class main {
+class main {
 
     public static void getResult(String name){
         System.out.println(name);
@@ -27,7 +28,8 @@ public class main {
 
         String[] files = {"ex1.txt", "ex2.txt"};
         for(String fileName : files){
-            ThreadClassEx2 thEx2 = new ThreadClassEx2(fileName);
+
+            ThreadClassEx4 thEx2 = new ThreadClassEx4(fileName);
             thEx2.start();
             while(true){
                 if(thEx2.getResult() != null){

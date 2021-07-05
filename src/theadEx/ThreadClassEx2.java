@@ -1,8 +1,8 @@
 package theadEx;
 
-public class ThreadClassEx1 extends Thread{
+public class ThreadClassEx2 extends Thread{
 
-    public ThreadClassEx1() {
+    public ThreadClassEx2() {
 
     }
 

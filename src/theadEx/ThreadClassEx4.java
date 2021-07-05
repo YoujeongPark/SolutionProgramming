@@ -4,12 +4,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class ThreadClassEx2 extends Thread{
+public class ThreadClassEx4 extends Thread{
 
     private String fileName;
     private String result;
 
-    public ThreadClassEx2(String fileName) {
+    public ThreadClassEx4(String fileName) {
         this.fileName = fileName;
     }
 
