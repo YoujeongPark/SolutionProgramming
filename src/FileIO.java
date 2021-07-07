@@ -28,6 +28,70 @@ public class FileIO {
         return inputNumber;
     }
 
+    public void readingFolderFileNames(){
+        File rw = new File(".\\src\\INPUT");
+        File []fileList = rw.listFiles();
+
+        for(File file : fileList) {
+            if(file.isFile()) {
+                String fileName  = file.getName();
+                System.out.println("fileName : " + fileName);
+            }
+        }
+    }
+
+    public void makingFolder(){
+        String path = ".\\src\\OUTPUT\\"; //폴더 경로
+        File Folder = new File(path);
+
+        // 디렉토리 없을 경우 폴더 생성
+        if (!Folder.exists()) {
+            try{
+                Folder.mkdir(); //폴더 생성합니다.
+                System.out.println("폴더가 생성되었습니다.");
+            }
+            catch(Exception e){
+                e.getStackTrace();
+            }
+        }else {
+            System.out.println("이미 폴더가 생성되어 있습니다.");
+        }
+    }
+
+    public void fileSizeCheck(){
+        String size = "";
+        File file = new File(".\\src\\INPUT\\" + "txtEx.txt");
+        if(file.exists()) {
+            long IFileSize = file.length();
+            size = Long.toString(IFileSize) + "bytes";
+
+            if (file.length() > 2048){ // 2Kbyte
+                System.out.println("2Kbyte 이상의 파일입니다. ");
+            }
+
+        }else{
+            size = "File not exist";
+        }
+
+        System.out.println(size);
+
+    }
+
+    public void bufferCopy() throws IOException {
+        final int BUF_SIZE = 512;
+        byte[] buffer = new byte[BUF_SIZE];
+        InputStream in = new BufferedInputStream(new FileInputStream(".\\src\\INPUT\\" + "Ex"));
+        OutputStream out = new BufferedOutputStream(new FileOutputStream(".\\src\\OUTPUT\\" + "Ex"));
+        int nRead;
+        while ((nRead = in.read(buffer)) > 0)
+        {
+            out.write(buffer,  0, nRead );
+        }
+        in.close();
+        out.close();
+    }
+
+
 
     public void fileRead() throws IOException {
         //FileReader fr = new FileReader("E:\\01_github\\SolutionProgramming\\src\\txtEx.txt"); //절대 경로
