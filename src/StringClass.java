@@ -13,11 +13,11 @@ public class StringClass {
         }
     }
 
-    public void getLength(){
+    public void getLength(){ // String 길이
         System.out.println(name.length());
     }
 
-    public void getSubString(){
+    public void getSubString(){ // String 일부 문자열 추출 
         System.out.println(name.substring(0,4));
     }
 
