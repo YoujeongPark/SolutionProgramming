@@ -1,4 +1,4 @@
-import java.sql.SQLOutput;
+package main.java;
 import java.util.StringTokenizer;
 
 public class StringClass {
