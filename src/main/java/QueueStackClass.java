@@ -36,6 +36,14 @@ public class QueueStackClass {
                 return min;
         }
 
+        public boolean isQueueEmpty(Queue<?> queue){
+                return queue.isEmpty();
+        }
+
+        public boolean isQueueAllSame(Queue<?> queue){
+                return Arrays.stream(queue.toArray()).allMatch(s->s.equals(queue.toArray()[0]));
+        }
+
 
         //Stack
         public int StackSum(Stack<Integer> stack){
@@ -73,6 +81,14 @@ public class QueueStackClass {
                 return min;
         }
 
+        public boolean isStackEmpty(Stack<?> stack){
+                return stack.isEmpty();
+        }
+
+        public boolean isStackAllSame(Stack<?> stack){
+                return Arrays.stream(stack.toArray()).allMatch(s->s.equals(stack.toArray()[0]));
+        }
+
 
         //Deque(Stack + Queue)
         public void DequeBasic() {
@@ -87,8 +103,9 @@ public class QueueStackClass {
                 deque.removeLast();
                 deque.pollLast();
 
-                System.out.println("Deque getFirst : " + deque.getFirst());
-                System.out.println("Deque peekFirst : " + deque.peekFirst());
+                //제거하지 않은체 리턴
+                System.out.println("Deque getFirst : " + deque.getFirst()); // 비어있으면 예외 발생
+                System.out.println("Deque peekFirst : " + deque.peekFirst()); // 비어있으면 null 리턴
                 System.out.println("Deque getLast : " + deque.getLast());
                 System.out.println("Deque peekLast : " + deque.peekLast());
 
@@ -107,6 +124,14 @@ public class QueueStackClass {
         public int findDequeMin(Deque<Integer> deque){
                 int min = deque.stream().max(Integer::compare).orElse(-1);
                 return min;
+        }
+
+        public boolean isDequeEmpty(Deque<?> deque){
+                return deque.isEmpty();
+        }
+
+        public boolean isStackAllSame(Deque<?> deque){
+                return Arrays.stream(deque.toArray()).allMatch(s->s.equals(deque.toArray()[0]));
         }
 
         // 공통 - iterator
