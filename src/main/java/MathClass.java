@@ -1,6 +1,12 @@
+package main.java;
+
 public class MathClass {
 
     public static double number = 1234.56789;
+
+    public boolean between(int value, int minValue, int maxValue) {
+        return  value >= minValue && value <= maxValue;
+    }
 
     //올림
     public void setRoundUpNumber(){

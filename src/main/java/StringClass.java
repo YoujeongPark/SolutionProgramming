@@ -1,9 +1,39 @@
 package main.java;
+import java.util.*;
+import java.sql.Array;
 import java.util.StringTokenizer;
 
 public class StringClass {
 
     public static String name = "Solution Program";
+
+    public void showStringExample(){
+        String str = "안녕하세요,로지,입니다.";
+        String[] strArray= str.split(",");
+        System.out.println(strArray[0]); // 안녕하세요
+    }
+
+    public String[] chgArrray(){
+        String str = "안녕하세요,로지,입니다.";
+        System.out.println(Arrays.stream(str.split("")).toList());
+        return str.split("");
+    }
+
+    public void judgeLength() {
+        String str = "안녕하세요";
+        System.out.println(str.length()); // 일반 문자열일떄 length();
+
+        String[] strArray = str.split(",");
+        System.out.println(strArray.length); // Array일때 length
+
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        System.out.println(arrayList.size());// List일때 size()
+    }
+
+    public void stringCharAt(){
+        String str = "안녕하세요";
+        System.out.println(str.charAt(1)); // 녕
+    }
 
     public void getIndex(){
         if(name.indexOf("P") >=0){
@@ -47,6 +77,6 @@ public class StringClass {
             System.out.println(stk2.nextToken()); //단어출력...
         }
 
-
+        //출처 - https://ifuwanna.tistory.com/232
     }
 }
