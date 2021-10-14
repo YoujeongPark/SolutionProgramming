@@ -1,14 +1,13 @@
 package theadEx;
-import java.nio.channels.AsynchronousFileChannel;
 import java.util.concurrent.locks.ReentrantLock;
 
 
-public class MutexClass extends Thread {
-    ReentrantLock lock = new ReentrantLock();
+public class MutexClass2 extends Thread {
+    static ReentrantLock lock = new ReentrantLock();
 
     String threadName;
 
-    public MutexClass(String name){
+    public MutexClass2(String name){
         this.threadName = name;
     }
 
@@ -24,7 +23,7 @@ public class MutexClass extends Thread {
     public void printNums(String name){
         int i;
         System.out.println(name);
-        for(i = 1; i<=10 ; i++){
+        for(i = 1; i<=20 ; i++){
             System.out.print(i + " ");
         }
         System.out.println();

@@ -1,12 +1,46 @@
+import main.java.MathClass;
 import main.java.QueueStackClass;
+import main.java.SortingClass;
+import main.java.StringClass;
 import org.w3c.dom.ls.LSOutput;
-import theadEx.ThreadClassEx1;
-import theadEx.ThreadClassEx2;
-import theadEx.ThreadClassEx4;
+import theadEx.*;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.locks.ReentrantLock;
+
+class ThreadClass extends Thread {
+    static ReentrantLock lock = new ReentrantLock();
+
+    String threadName;
+
+    public ThreadClass(String name){
+        this.threadName = name;
+    }
+
+    public void run(){
+        lock.lock();
+        try{
+            printNums(threadName);
+        }finally{
+            lock.unlock();
+        }
+    }
+
+    public static void printNums(String name){
+        int i;
+        System.out.println(name);
+        for(i = 1; i<=20 ; i++){
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
+    }
+
+}
+
 
 class main {
 
@@ -14,21 +48,55 @@ class main {
         System.out.println(name);
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
+
+            /** mutex Example - Thread 2개 만든 후 Main, thread 동시 연속 **/
+            ThreadClass thEx1 = new ThreadClass("mutex1");
+            ThreadClass thEx2 = new ThreadClass("mutex2");
+            thEx1.start();
+            thEx2.start();
+
+            ThreadClass.lock.lock();
+
+            try{
+                ThreadClass.printNums("Main");
+            }finally{
+                ThreadClass.lock.unlock();
+            }
+            thEx1.join();
+            thEx2.join();
+
+
+
+
+
+//            ThreadClassEx1 thEx1 = new ThreadClassEx1();
+//            thEx1.start();
+//            System.out.println("------");
+
+
+
+
+//            SortingClass sortingClass = new SortingClass();
+//            sortingClass.collectionsSorting();
+
+//            MathClass mathClass = new MathClass();
+//            System.out.println(mathClass.between(2,1,3));
+
 
         //Queue<Integer> queue = new LinkedList<>();
 
-        QueueStackClass queueStackClass = new QueueStackClass();
+//        QueueStackClass queueStackClass = new QueueStackClass();
+//
+//        Queue<Integer> queue = new LinkedList<Integer>();
+//        queue.offer(1);
+//        queue.offer(1);
+//        queue.offer(1);
+//        queue.offer(1);
+//        queue.offer(1);
+//
+//        System.out.println(queueStackClass.isQueueAllSame(queue));
 
-        Queue<Integer> queue = new LinkedList<Integer>();
-        queue.offer(1);
-        queue.offer(2);
-        queue.offer(3);
-        queue.offer(4);
-        queue.offer(5);
-
-        System.out.println(queueStackClass.QueueSum(queue));
-        System.out.println(queueStackClass.QueueSum(queue));
 
 
 
