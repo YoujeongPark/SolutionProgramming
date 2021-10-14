@@ -11,12 +11,34 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.locks.ReentrantLock;
 
-class ThreadClass extends Thread {
+class ThreadClass extends Thread{
+    String threadName;
+    public ThreadClass(String name){
+        this.threadName = name;
+    }
+
+    public void run(){
+        for(int i = 1; i<=10 ; i++){
+            System.out.println(threadName + " " + i );
+            try{
+                sleep(10);
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+        System.out.println();
+
+    }
+}
+
+
+
+class Mutex extends Thread {
     static ReentrantLock lock = new ReentrantLock();
 
     String threadName;
 
-    public ThreadClass(String name){
+    public Mutex(String name){
         this.threadName = name;
     }
 
@@ -32,7 +54,7 @@ class ThreadClass extends Thread {
     public static void printNums(String name){
         int i;
         System.out.println(name);
-        for(i = 1; i<=20 ; i++){
+        for(i = 1; i<=10 ; i++){
             System.out.print(i + " ");
         }
         System.out.println();
@@ -50,21 +72,45 @@ class main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-            /** mutex Example - Thread 2개 만든 후 Main, thread 동시 연속 **/
-            ThreadClass thEx1 = new ThreadClass("mutex1");
-            ThreadClass thEx2 = new ThreadClass("mutex2");
+
+            JsonClass jsonClass = new JsonClass();
+            jsonClass.makingJson();
+            jsonClass.basicJson();
+            jsonClass.readingJson();
+            jsonClass.checkingTypeJson();
+
+
+
+            /** 일반 쓰레드  **/
+            ThreadClass thEx1 = new ThreadClass("thread1");
+            ThreadClass thEx2 = new ThreadClass("thread2");
             thEx1.start();
             thEx2.start();
 
-            ThreadClass.lock.lock();
-
-            try{
-                ThreadClass.printNums("Main");
-            }finally{
-                ThreadClass.lock.unlock();
+            for(int i = 1; i<=10 ; i++){
+                System.out.println("main" + " "+ i);
+                Thread.sleep(10);
             }
+
             thEx1.join();
             thEx2.join();
+
+
+            /** mutex Example - Thread 2개 만든 후 Main, thread 동시 연속 **/
+            Mutex mutex1 = new Mutex("mutex1");
+            Mutex mutex2 = new Mutex("mutex2");
+            mutex1.start();
+            mutex2.start();
+
+            Mutex.lock.lock();
+
+            try{
+                Mutex.printNums("Main");
+            }finally{
+                Mutex.lock.unlock();
+            }
+            mutex1.join();
+            mutex2.join();
 
 
 
@@ -101,8 +147,7 @@ class main {
 
 
 
-//        JsonClass jsonClass = new JsonClass();
-//        jsonClass.basicJson();
+
 //
 
         //Thread

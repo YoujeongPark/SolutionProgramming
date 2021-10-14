@@ -21,7 +21,7 @@ class ListMapClass {
 
             while((str = bufferedReader.readLine())!= null){
                 String words[] = str.split("");
-                Grade grade = new Grade(words[0], Integer.parseInt(words[1]), Integer.parseInt(words[2]), Integer.parseInt(words[3]))
+                Grade grade = new Grade(words[0], Integer.parseInt(words[1]), Integer.parseInt(words[2]), Integer.parseInt(words[3]));
                 arrayList.add(grade);
             }
             bufferedReader.close();

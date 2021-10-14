@@ -1,5 +1,7 @@
 package main.java;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
+
 import java.io.*;
 import java.nio.Buffer;
 import java.nio.charset.Charset;
@@ -80,7 +82,7 @@ public class FileIO {
     }
 
     public void bufferCopy() throws IOException {
-        final int BUF_SIZE = 512;
+        final int BUF_SIZE = 512; // 버퍼 사이즈
         byte[] buffer = new byte[BUF_SIZE];
         InputStream in = new BufferedInputStream(new FileInputStream(".\\src\\INPUT\\" + "Ex"));
         OutputStream out = new BufferedOutputStream(new FileOutputStream(".\\src\\OUTPUT\\" + "Ex"));
@@ -91,6 +93,18 @@ public class FileIO {
         }
         in.close();
         out.close();
+    }
+
+    public void fileCheckAndCopy(){
+        File directory = new File("./INPUT");
+        File[] fileList = directory.listFiles();
+        for(File file : fileList){
+            System.out.println(file.getName() + " : "+ file.length() + "bytes");
+            if(file.length() > 2048){ // 􏲃 기가 2Kbyte가 넘는 􏰄파일
+                System.out.println("FileCopy ");
+            }
+        }
+
     }
 
 
